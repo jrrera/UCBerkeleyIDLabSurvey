@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from "@angular/core";
 import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
 import { MyApp } from "./app.component";
 
-import { HelloIonicPage } from "../pages/hello-ionic/hello-ionic";
+import { SurveyPage } from "../pages/survey/survey";
 import { ItemDetailsPage } from "../pages/item-details/item-details";
 import { ListPage } from "../pages/list/list";
 import { SurveyComponent } from "./survey.component";
@@ -14,14 +14,14 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
+    SurveyPage,
     ItemDetailsPage,
     ListPage,
     SurveyComponent
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, HelloIonicPage, ItemDetailsPage, ListPage],
+  entryComponents: [MyApp, SurveyPage, ItemDetailsPage, ListPage],
   providers: [
     StatusBar,
     SplashScreen,
