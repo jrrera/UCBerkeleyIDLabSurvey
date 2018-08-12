@@ -11,6 +11,7 @@ import * as widgets from "surveyjs-widgets";
     <div class="survey-container contentcontainer codecontainer">
       <div id="surveyElement">
       </div>
+      <p id="test-area"></p>
     </div>
   `
 })
@@ -24,7 +25,46 @@ export class SurveyComponent {
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
 
     surveyModel.onValueChanged.add((survey, options) => {
-      console.log(options.name, options.question);
+      const inputElem = document.getElementById("test-area");
+      const BOOTSTRAP_SLIDER = "bootstrapslider"; 
+      inputElem.textContent = '';
+
+      console.log(options);
+      
+      if (options.question.customTypeName === BOOTSTRAP_SLIDER) {
+        let slider = options.question.bootstrapSlider;
+        console.log('template', slider);
+        
+        inputElem.innerText = options.value;
+
+        slider.setAttribute('ticks', [0, 100])
+        slider.setAttribute('ticks_positions', [0, 100])
+        slider.setAttribute('ticks_labels', ['first', 'last'])
+        slider.setAttribute('tooltip', 'show')
+        // slider.setAttribute('tooltip_position', 'bottom')
+        console.log('refreshing...');
+        slider.refresh();
+        
+      } 
+
+      if (options.question.customTypeName === 'nouislider') {
+        
+        setTimeout(function() {
+          let slider = options.question.noUiSlider;
+          console.log(slider);
+
+          slider.pips({
+            mode: 'positions',
+            density: 10,
+            values: [0, 100],
+            format: {
+              to: function (a) {
+                return a === 0 ? '0 (not at all)' : '100 (as much as possible)'
+              }
+            }
+          })
+        }, 100);
+      }
       // ADD OVERRIDES HERE TO CUSTOMIZE BEHAVIOR OF THE SLIDER OF CHOICE.
       // if(options.name !== "know") return;
       // knownChoices = options.question.choices;

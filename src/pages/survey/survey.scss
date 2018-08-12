@@ -1,6 +1,19 @@
 page-survey {
-  .noUi-tooltip {
-      // Just for testing. Remove later.
-      bottom: -225% !important;
-  }
+    .noUi-tooltip {
+        // Just for testing. Remove later.
+        bottom: -225% !important;
+    }
+
+    .noUi-value {
+        &[data-value="0"] {
+            left: 3% !important;
+            top: 20% !important;
+        }
+
+        &[data-value="100"] {
+            right: -7% !important;
+            top: 20% !important;
+            left: initial !important;
+        }
+    }
 }

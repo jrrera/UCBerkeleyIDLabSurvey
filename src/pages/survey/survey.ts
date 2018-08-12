@@ -2,6 +2,10 @@ import { Component } from "@angular/core";
 // import { SurveyComponent } from "../../app/survey.component";
 import questionsArray from "./survey-questions";
 
+import * as Survey from "survey-angular";
+console.log(Survey);
+
+
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
@@ -40,7 +44,7 @@ export class SurveyPage {
   constructor() {
     this.surveyConfig = {
       title: 'Survey',
-      showProgressBar: 'button',
+      showProgressBar: 'bottom',
       goNextPageAutomatic: false,
       showNavigationButtons: true,
       pages: randomizeQuestionsIntoPages(questionsArray)
