@@ -1,18 +1,21 @@
 page-survey {
     .noUi-tooltip {
-        // Just for testing. Remove later.
-        bottom: -225% !important;
+        // I'm sure there is a better way to force the tooltip to the 
+        // bottom of the page, but this worked in a pinch. 
+        bottom: -275% !important;
     }
 
     .noUi-value {
-        &[data-value="0"] {
-            left: 3% !important;
-            top: 20% !important;
-        }
+        font-size: 1.2rem;
+        top: 40%;
 
+        // Disable unhelpful transform property.
+        transform: initial;
+        -webkit-transform: initial;
+
+        // Special positioning needs for 100% label on right side.
         &[data-value="100"] {
-            right: -7% !important;
-            top: 20% !important;
+            right: -5px;
             left: initial !important;
         }
     }
