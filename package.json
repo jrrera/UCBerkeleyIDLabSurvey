@@ -1,7 +1,7 @@
 {
-  "name": "MyIonicProject",
+  "name": "UCBerkeleyIDLabSurvey",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Jon Guerrera",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -29,8 +29,8 @@
     "ionicons": "3.0.0",
     "nouislider": "^11.1.0",
     "rxjs": "5.5.11",
-    "survey-angular": "^1.0.36",
-    "surveyjs-widgets": "^1.0.36",
+    "survey-angular": "^1.0.42",
+    "surveyjs-widgets": "^1.0.42",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
   },
