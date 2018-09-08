@@ -20,30 +20,26 @@ export class SurveyComponent {
   ngOnInit() {
     widgets.nouislider(Survey);
     widgets.bootstrapslider(Survey);
-    let surveyModel = new Survey.Model(this.json);
-    Survey.SurveyNG.render("surveyElement", { model: surveyModel });
-
-    surveyModel.onValueChanged.add((survey, options) => {
+    const surveyModel = new Survey.Model(this.json);
+    
+    surveyModel.onAfterRenderQuestion.add((survey, options) => {
       if (options.question.customTypeName === 'nouislider') {
-        
-        // Use setTimeout because there was a DOM rendering race condition causing 
-        // this to fail sometimes.
-        setTimeout(function() {
-          let slider = options.question.noUiSlider;
-          console.log(slider);
+      
+        const slider = options.question.noUiSlider;
 
-          slider.pips({
-            mode: 'positions',
-            density: 10,
-            values: [0, 100],
-            format: {
-              to: function (a) {
-                return a === 0 ? '0 (not at all)' : '(as much as possible) 100'
-              }
+        slider.pips({
+          mode: 'positions',
+          density: 10,
+          values: [0, 100],
+          format: {
+            to: function (a) {
+              return a === 0 ? '0 (not at all)' : '(as much as possible) 100'
             }
-          })
-        }, 100);
+          }
+        });
       }
     });
+
+    Survey.SurveyNG.render("surveyElement", { model: surveyModel });
   }
 }
