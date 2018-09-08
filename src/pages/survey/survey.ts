@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
-// import { SurveyComponent } from "../../app/survey.component";
 import questionsArray from "./survey-questions";
 
 import * as Survey from "survey-angular";
-console.log(Survey);
 
 
 
@@ -33,7 +31,7 @@ function randomizeQuestionsIntoPages(questions:Object[]) {
   return pagesList;
 }
 
-console.log(randomizeQuestionsIntoPages(questionsArray));
+console.log('Randomized order', randomizeQuestionsIntoPages(questionsArray));
 
 @Component({
   selector: "page-survey",
@@ -47,6 +45,7 @@ export class SurveyPage {
       showProgressBar: 'bottom',
       goNextPageAutomatic: false,
       showNavigationButtons: true,
+      clearInvisibleValues: 'onHidden',
       pages: randomizeQuestionsIntoPages(questionsArray)
     };
   }

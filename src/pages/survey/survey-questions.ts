@@ -13,7 +13,7 @@ export default [
   {
     name: "feelDepressed",
     type: "nouislider",
-    title: "Right now, I feel down or depressed. (replace with slider)",
+    title: "Right now, I feel down or depressed.",
     isRequired: true,
     anchors: sliderAnchors
   },
@@ -24,7 +24,6 @@ export default [
     isRequired: true,
     sliderAnchors,
     anchors: sliderAnchors
-    
   },
   {
     name: "craveCigarette",
@@ -46,5 +45,22 @@ export default [
     title: "Are you in a location that allows smoking?",
     isRequired: true,
     choices: ["Yes", "No"]
+  },
+  {
+    name: "aloneOrWithPeople",
+    type: "radiogroup",
+    title: "Are you alone or around other people?",
+    isRequired: true,
+    choices: ["Alone", "Around other people"]
+  },
+  {
+    name: "whoAreYouWith",
+    type: "checkbox",
+    title: "Who are you with?",
+    isRequired: true,
+    hasOther: true,
+    visibleIf: "{aloneOrWithPeople}='Around other people'",
+    otherText: "Other (describe)",
+    choices: ["Friends", "Family", "Romantic Partner", "Coworkers", "Strangers"]
   }
 ];
