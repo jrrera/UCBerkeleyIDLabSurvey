@@ -8,18 +8,25 @@ import * as widgets from "surveyjs-widgets";
     <div class="survey-container contentcontainer codecontainer">
       <div id="surveyElement">
       </div>
-      <p id="test-area"></p>
+      <pre id="resultsArea">Results: {{results}} </pre>
     </div>
   `
 })
 export class SurveyComponent {
   @Input() json: any;
 
+  results: String;
+
   ngOnInit() {
     widgets.nouislider(Survey);
     widgets.bootstrapslider(Survey);
     const surveyModel = new Survey.Model(this.json);
-  
+
+    // TODO: Remove when prototyping phase is complete
+    surveyModel.onComplete.add((result) => {
+      this.results = JSON.stringify(result.data, null, 4);
+    });
+    
     // Add slider labels onto nouislider questions after it renders to DOM.
     surveyModel.onAfterRenderQuestion.add((survey, options) => {
       const sliderZeroLabel = '0 (not at all)';
