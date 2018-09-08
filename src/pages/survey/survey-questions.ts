@@ -1,66 +1,88 @@
-const sliderAnchors = [ "0 (not at all)", "100 (as much as possible)" ];
-
 export default [
-  {
-    name: "numCigarettes",
-    type: "text",
-    title: "How many cigarettes have you smoked since your last survey?",
-    placeHolder: "0",
-    isRequired: true,
-    inputType: "tel",
-    validators: [{ type: "numeric", minValue: 0, maxValue: 200 }]
+  { 
+    questions: [
+      {
+        name: "numCigarettes",
+        type: "text",
+        title: "How many cigarettes have you smoked since your last survey?",
+        placeHolder: "0",
+        isRequired: true,
+        inputType: "tel",
+        validators: [{ type: "numeric", minValue: 0, maxValue: 200 }]
+      }
+    ]
   },
-  {
-    name: "feelDepressed",
-    type: "nouislider",
-    title: "Right now, I feel down or depressed.",
-    isRequired: true,
-    anchors: sliderAnchors
+  { 
+    questions: [
+      {
+        name: "feelDepressed",
+        type: "nouislider",
+        title: "Right now, I feel down or depressed.",
+        isRequired: true,
+      }
+    ]
   },
-  {
-    name: "feelHappy",
-    type: "nouislider",
-    title: "Right now, I feel happy.",
-    isRequired: true,
-    sliderAnchors,
-    anchors: sliderAnchors
+  { 
+    questions: [
+      {
+        name: "feelHappy",
+        type: "nouislider",
+        title: "Right now, I feel happy.",
+        isRequired: true,
+      }
+    ]
   },
-  {
-    name: "craveCigarette",
-    type: "nouislider",
-    title: "Right now, I am craving a cigarette.",
-    isRequired: true,
-    anchors: sliderAnchors
+  { 
+    questions: [
+      {
+        name: "craveCigarette",
+        type: "nouislider",
+        title: "Right now, I am craving a cigarette.",
+        isRequired: true,
+      }
+    ]
   },
-  {
-    name: "currentLocation",
-    type: "text",
-    inputType: "text",
-    title: "Please describe your current location.",
-    isRequired: true
+  { 
+    questions: [
+      {
+        name: "currentLocation",
+        type: "text",
+        inputType: "text",
+        title: "Please describe your current location.",
+        isRequired: true
+      }
+    ]
   },
-  {
-    name: "allowedSmoking",
-    type: "radiogroup",
-    title: "Are you in a location that allows smoking?",
-    isRequired: true,
-    choices: ["Yes", "No"]
+  { 
+    questions: [
+      {
+        name: "allowedSmoking",
+        type: "radiogroup",
+        title: "Are you in a location that allows smoking?",
+        isRequired: true,
+        choices: ["Yes", "No"]
+      }
+    ]
   },
-  {
-    name: "aloneOrWithPeople",
-    type: "radiogroup",
-    title: "Are you alone or around other people?",
-    isRequired: true,
-    choices: ["Alone", "Around other people"]
+  { 
+    questions: [
+      {
+        name: "aloneOrWithPeople",
+        type: "radiogroup",
+        title: "Are you alone or around other people?",
+        isRequired: true,
+        choices: ["Alone", "Around other people"]
+      },
+      {
+        name: "whoAreYouWith",
+        type: "checkbox",
+        title: "Who are you with?",
+        isRequired: true,
+        hasOther: true,
+        visibleIf: "{aloneOrWithPeople}='Around other people'",
+        otherText: "Other (describe)",
+        choices: ["Friends", "Family", "Romantic Partner", "Coworkers", "Strangers"]
+      }
+    ]
   },
-  {
-    name: "whoAreYouWith",
-    type: "checkbox",
-    title: "Who are you with?",
-    isRequired: true,
-    hasOther: true,
-    visibleIf: "{aloneOrWithPeople}='Around other people'",
-    otherText: "Other (describe)",
-    choices: ["Friends", "Family", "Romantic Partner", "Coworkers", "Strangers"]
-  }
 ];
